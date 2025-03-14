@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/edit_game.css' %}">
+
+    <title>Editar Jogo</title>
+</head>
+<body class="container mt-4">
+    <h1>Editar Jogo - {{ game.title }}</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Salvar Alterações</button>
+    </form>
+
+    <a href="{% url 'game_list' %}" class="btn btn-secondary mt-3">Cancelar</a>
+</body>
+</html>
