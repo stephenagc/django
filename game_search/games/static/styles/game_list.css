@@ -1,4 +1,3 @@
-/* Estilo Geral */
 body {
     font-family: 'Poppins', Arial, sans-serif;
     background-color: #f0f2f5;
@@ -36,7 +35,6 @@ body.dark-mode h1 {
     color: #fff;
 }
 
-/* Botão de Tema */
 .btn-theme {
     background: linear-gradient(135deg, #007bff, #0056b3);
     color: white;
