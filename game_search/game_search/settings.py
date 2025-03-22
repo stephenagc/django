@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Certifique-se de que este caminho reflete onde está sua pasta 'static'
+]
 
 # Application definition
 
