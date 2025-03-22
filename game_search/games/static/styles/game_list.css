@@ -8,20 +8,17 @@ body {
     text-align: center;
 }
 
-/* Dark Mode */
 body.dark-mode {
     background-color: #1a1a1a;
     color: #e0e0e0;
 }
 
-/* Container Principal */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* Header */
 header {
     display: flex;
     justify-content: space-between;
@@ -54,7 +51,6 @@ body.dark-mode h1 {
     background: linear-gradient(135deg, #0056b3, #003d82);
 }
 
-/* Formulário de Pesquisa */
 .search-form {
     background: #fff;
     padding: 15px;
@@ -68,25 +64,24 @@ body.dark-mode .search-form {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Conteúdo do Formulário */
 .form-content {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
-    flex-wrap: wrap; /* Permite que quebre em telas menores */
+    flex-wrap: wrap;
 }
 
-.form-content p { /* Estiliza o campo de pesquisa gerado por {{ form.as_p }} */
+.form-content p {
     margin: 0;
 }
 
-.form-content input { /* Estiliza o input dentro do <p> */
+.form-content input {
     padding: 10px;
     border-radius: 25px;
     border: 1px solid #ccc;
     font-size: 1rem;
-    width: 250px; /* Tamanho fixo para consistência */
+    width: 250px;
 }
 
 body.dark-mode .form-content input {
@@ -95,13 +90,11 @@ body.dark-mode .form-content input {
     border-color: #555;
 }
 
-/* Ações do Formulário */
 .form-actions {
     display: flex;
     gap: 10px;
 }
 
-/* Botões */
 .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -162,7 +155,6 @@ body.dark-mode .form-content input {
     background: linear-gradient(135deg, #a60101, #b71c1c);
 }
 
-/* Cards de Jogos */
 .games-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
