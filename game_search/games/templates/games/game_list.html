@@ -5,20 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/game_list.css' %}">
-
-    <title>Lista de Jogos</title>
+    <title>Game Search</title>
 </head>
-<body class="container mt-4">
-    <h1 class="mb-4">Lista de Jogos</h1>
+<body class="container mt-4 dark-mode">
+    <header>
+        <h1>Game Search</h1>
+        <button id="theme-toggle" class="btn btn-theme">☀️ Light Mode</button>
+    </header>
 
-    <!-- Formulário de Pesquisa -->
-    <form method="GET" class="mb-3">
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Buscar</button>
-        <a href="{% url 'game_list' %}" class="btn btn-secondary">Limpar</a>
+    <form method="GET" class="mb-3 search-form">
+        <div class="form-content">
+            {{ form.as_p }}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+                <a href="{% url 'game_list' %}" class="btn btn-secondary">Limpar</a>
+                <a href="{% url 'add_game' %}" class="btn btn-success">Adicionar Jogo</a>
+            </div>
+        </div>
     </form>
-
-    <a href="{% url 'add_game' %}" class="btn btn-success mb-3">Adicionar Jogo</a>
 
     <div class="games-grid">
         {% for game in games %}
@@ -27,14 +31,25 @@
                 <h3>{{ game.title }}</h3>
                 <p>{{ game.description }}</p>
                 <p><strong>Categoria:</strong> {{ game.category }}</p>
-
-                <a href="{% url 'edit_game' game.id %}" class="btn btn-warning">Editar</a>
-                <form method="post" action="{% url 'delete_game' game.id %}" style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger">Deletar</button>
-                </form>
+                <div class="card-actions">
+                    <a href="{% url 'edit_game' game.id %}" class="btn btn-warning">Editar</a>
+                    <form method="post" action="{% url 'delete_game' game.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Deletar</button>
+                    </form>
+                </div>
             </div>
         {% endfor %}
     </div>
+
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            toggleButton.textContent = body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
+        });
+    </script>
 </body>
 </html>

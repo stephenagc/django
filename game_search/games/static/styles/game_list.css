@@ -1,62 +1,219 @@
-    /* Estilo Geral */
+/* Estilo Geral */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #f0f2f5;
     margin: 0;
-    padding: 0px;
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
     text-align: center;
-    box-shadow: none;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
 }
 
 /* Container Principal */
 .container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
-    background: #fff;
     padding: 20px;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: #333;
+}
+
+body.dark-mode h1 {
+    color: #fff;
+}
+
+/* Botão de Tema */
+.btn-theme {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-theme:hover {
+    background: linear-gradient(135deg, #0056b3, #003d82);
+}
+
+/* Formulário de Pesquisa */
+.search-form {
+    background: #fff;
+    padding: 15px;
     border-radius: 10px;
-    box-shadow: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+body.dark-mode .search-form {
+    background: #2c2c2c;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Conteúdo do Formulário */
+.form-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Permite que quebre em telas menores */
+}
+
+.form-content p { /* Estiliza o campo de pesquisa gerado por {{ form.as_p }} */
+    margin: 0;
+}
+
+.form-content input { /* Estiliza o input dentro do <p> */
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 250px; /* Tamanho fixo para consistência */
+}
+
+body.dark-mode .form-content input {
+    background: #333;
+    color: #fff;
+    border-color: #555;
+}
+
+/* Ações do Formulário */
+.form-actions {
+    display: flex;
+    gap: 10px;
 }
 
 /* Botões */
 .btn {
     display: inline-block;
-    padding: 10px 15px;
+    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
     text-decoration: none;
-    font-size: 16px;
-    transition: background 0.3s;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: transform 0.2s ease, background 0.3s ease;
 }
 
-.btn-primary { background: #007bff; color: white; }
-.btn-primary:hover { background: #0056b3; }
+.btn:hover {
+    transform: translateY(-2px);
+}
 
-.btn-secondary { background: #ffc107; color: black; }
-.btn-secondary:hover { background: #e0a800; }
+.btn-primary {
+    background: linear-gradient(135deg, #007bff, #00c4ff);
+    color: white;
+}
 
-.btn-success { background: #19be00; color: white; }
-.btn-success:hover { background: #0f8200; }
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0056b3, #0099cc);
+}
 
-.btn-warning { background: #17b9ff; color: white; }
-.btn-warning:hover { background: #0267d4; }
+.btn-secondary {
+    background: linear-gradient(135deg, #ffc107, #ffeb3b);
+    color: #333;
+}
 
-.btn-danger { background: #ff1414; color: white; }
-.btn-danger:hover { background: #a60101; }
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #e0a800, #ffca28);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #19be00, #4caf50);
+    color: white;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #0f8200, #388e3c);
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #17b9ff, #0288d1);
+    color: white;
+}
+
+.btn-warning:hover {
+    background: linear-gradient(135deg, #0267d4, #01579b);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ff1414, #d32f2f);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #a60101, #b71c1c);
+}
 
 /* Cards de Jogos */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
 .card {
-    background: #ffffff;
-    border-radius: 8px;
-    padding: 15px;
-    margin: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: inline-block;
-    width: 300px;
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: left;
+}
+
+body.dark-mode .card {
+    background: #2c2c2c;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card img {
     max-width: 100%;
-    border-radius: 5px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+body.dark-mode .card h3 {
+    color: #fff;
+}
+
+.card p {
+    margin: 0 0 10px;
+    color: #666;
+}
+
+body.dark-mode .card p {
+    color: #b0b0b0;
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
 }
