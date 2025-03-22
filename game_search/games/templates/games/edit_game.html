@@ -4,19 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Jogo - {{ game.title }}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'styles/edit_game.css' %}">
-
-    <title>Editar Jogo</title>
 </head>
-<body class="container mt-4">
-    <h1>Editar Jogo - {{ game.title }}</h1>
+<body class="container mt-4 dark-mode">
+    <header>
+        <h1>Editar Jogo - {{ game.title }}</h1>
+        <button id="theme-toggle" class="btn btn-theme">☀️ Light Mode</button>
+    </header>
 
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-success">Salvar Alterações</button>
-    </form>
+    <main class="edit-container">
+        <form method="post" enctype="multipart/form-data" class="edit-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-success">Salvar Alterações</button>
+                <a href="{% url 'game_list' %}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </main>
 
-    <a href="{% url 'game_list' %}" class="btn btn-secondary mt-3">Cancelar</a>
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Carregar a preferência do tema
+        const theme = localStorage.getItem('theme') || 'dark-mode';
+        body.classList.add(theme);
+        toggleButton.textContent = theme === 'dark-mode' ? '☀️ Light Mode' : '🌙 Dark Mode';
+
+        // Alternar o tema e salvar no localStorage
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            toggleButton.textContent = isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
+            localStorage.setItem('theme', isDarkMode ? 'dark-mode' : 'light-mode');
+        });
+    </script>
 </body>
 </html>
