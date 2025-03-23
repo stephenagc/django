@@ -10,6 +10,7 @@
 </head>
 <body class="container mt-4">
     <h1>Adicionar Novo Jogo</h1>
+    <button id="theme-toggle" class="btn btn-theme">☀️ Light Mode</button>
 
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -18,5 +19,24 @@
     </form>
 
     <a href="{% url 'game_list' %}" class="btn btn-secondary mt-3">Voltar</a>
+    
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Carregar a preferência do tema
+        const theme = localStorage.getItem('theme') || 'dark-mode';
+        body.classList.add(theme);
+        toggleButton.textContent = theme === 'dark-mode' ? '☀️ Light Mode' : '🌙 Dark Mode';
+
+        // Alternar o tema e salvar no localStorage
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            toggleButton.textContent = isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
+            localStorage.setItem('theme', isDarkMode ? 'dark-mode' : 'light-mode');
+        });
+    </script>
 </body>
 </html>
